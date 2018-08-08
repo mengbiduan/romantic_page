@@ -110,12 +110,12 @@
             var today = new Date();
             var y = today.getFullYear() - start.getFullYear();
             if (today.getMonth() < start.getMonth()) {
-                if (today.getDay() < start.getDay()) {
+                if (today.getDate() < start.getDate()) {
                     y--;
                 }
             }
             var m = today.getMonth() - start.getMonth();
-            if (today.getDay() < start.getDay()) {
+            if (today.getDate() < start.getDate()) {
                 m--;
             }
             if (today.getMonth() < 1) {
@@ -123,7 +123,11 @@
                 start.setMonth(12 - 1);
             } else {
                 start.setFullYear(today.getFullYear());
-                start.setMonth(today.getMonth() - 1);
+                if (today.getDate() < start.getDate()) {
+                    start.setMonth(today.getMonth() - 1);
+                } else {
+                    start.setMonth(today.getMonth());
+                }
             }
             var d = ~~((today - start) / 1000 / 60 / 60 / 24);
             format_text('y', y);
