@@ -49,7 +49,7 @@
 
 <body>
     <div class="content">
-        <h2 id="love" onclick="change_mode();">傻璇儿</h2>
+        <h2 id="love" onclick="change_mode();"></h2>
         <h2>，我们已经在一起了</h2>
         <div id="timer" class="timer">
         </div>
@@ -134,7 +134,20 @@
             format_text('m', m);
             format_text('d', d);
         }
-        window.onload = change_mode;
+
+        window.onload = function () {
+            var sorted_list = [
+                '不傻璇儿',
+                '任奕璇',
+                '任奕璇儿',
+                '傻璇儿',
+                '璇儿',
+                '璇璇',
+                '蠢香菇'];
+            document.getElementById('love').innerHTML =
+                sorted_list[(Math.floor(Math.random() * sorted_list.length))];
+            change_mode();
+        }
     </script>
 </body>
 
